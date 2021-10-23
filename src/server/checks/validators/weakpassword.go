@@ -6,7 +6,7 @@ import (
 )
 
 type WeakPassword struct {
-	validator
+	Validator
 }
 
 func (e *WeakPassword) Check(email, password string) error {
@@ -16,6 +16,6 @@ func (e *WeakPassword) Check(email, password string) error {
 
 		return validationError
 	} else {
-		return e.CheckNext(email, password)
+		return e.checkNext(email, password)
 	}
 }

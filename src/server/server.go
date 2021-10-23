@@ -3,7 +3,8 @@ package server
 import (
 	"fmt"
 	"go-chain-responsabilities/src/errors"
-	"go-chain-responsabilities/src/server/validators"
+	"go-chain-responsabilities/src/server/checks"
+	"go-chain-responsabilities/src/server/checks/validators"
 )
 
 type Server struct {
@@ -12,10 +13,10 @@ type Server struct {
 	RegisterInputChecks validators.Interface
 }
 
-func (s *Server) Initialize() *Server{
+func (s *Server) Initialize() *Server {
 	s.registeredUsers = make(map[string]string)
-	s.LoginInputChecks = new(validators.Void)
-	s.RegisterInputChecks = new(validators.Void)
+	s.LoginInputChecks = new(checks.Login)
+	s.RegisterInputChecks = new(checks.Registration)
 
 	return s
 }

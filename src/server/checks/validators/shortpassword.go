@@ -7,7 +7,7 @@ import (
 )
 
 type ShortPassword struct {
-	validator
+	Validator
 	MinimumLength int
 }
 
@@ -24,6 +24,6 @@ func (s *ShortPassword) Check(email, password string) error {
 
 		return validationError
 	} else {
-		return s.CheckNext(email, password)
+		return s.checkNext(email, password)
 	}
 }

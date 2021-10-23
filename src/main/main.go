@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	server2 "go-chain-responsabilities/src/server"
-	"go-chain-responsabilities/src/server/validators"
 	"os"
 	"strings"
 )
@@ -14,15 +13,18 @@ var reader = bufio.NewReader(os.Stdin)
 func main() {
 	server := new(server2.Server).Initialize()
 
-	registerChecks := new(validators.Email)
-	registerChecks.
-		LinkWith(new(validators.ShortPassword).Initialize(4)).
-		LinkWith(new(validators.WeakPassword))
+	// check sequences could be overwritten if desired
+	/*
+		registerChecks := new(validators.Email)
+		registerChecks.
+			LinkWith(new(validators.ShortPassword).Initialize(4)).
+			LinkWith(new(validators.WeakPassword))
 
-	loginChecks := new(validators.Email)
+		loginChecks := new(validators.Email)
 
-	server.RegisterInputChecks = registerChecks
-	server.LoginInputChecks = loginChecks
+		server.RegisterInputChecks = registerChecks
+		server.LoginInputChecks = loginChecks
+	*/
 
 	for {
 		inputString := requestUserAction()
